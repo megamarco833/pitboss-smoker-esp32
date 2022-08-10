@@ -36,6 +36,7 @@ tasmota will simulate the pression of the button so you can control remotely the
 4. below you can fine a rule that is setup on tasmota to publish the value of pwm:
 
 `rule3 ON Analog#A1div10 DO publish BBQ %Value% ENDON ON SYSTEM#BOOT DO Status 10 ENDON `
+
 `rule3 1`
 
 the purpose is to publish the ADC values in a topic named BBQ. in this case every settings of the rotrary switch can be easly recognized on the BBQ topic.
