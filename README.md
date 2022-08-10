@@ -11,7 +11,8 @@ this hack is only for navigator model with rotary switch to control the temperat
   ![0unknown](https://user-images.githubusercontent.com/44502572/183912722-62b82c26-4db4-42a6-9c9b-f7fc120a4d24.png)
 
 here you can see the connection
-![0push-button](https://user-images.githubusercontent.com/44502572/183912792-524fd4ca-1578-4cf2-b8c0-5b5011dbaa69.png)
+
+![0temperature](https://user-images.githubusercontent.com/44502572/183915460-1aed9b2c-4c1c-45d2-984b-8aac52bf96bc.png)
 
 3. for push button that control the smoke here below you can see the connection to ESP32
 tasmota will simulate the pression of the button so you can control remotely the smoke level
