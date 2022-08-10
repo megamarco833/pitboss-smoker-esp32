@@ -3,11 +3,13 @@ hack of pitboss navigator bbq smoker with ESP32 controlling remotely.
 this hack is only for navigator model with rotary switch to control the temperature
 the purpose of this hack is to control remoetly the temperature of the pitboss navigator and smoke level
 
-what you need:
-ESP32
-tasmota firmware
-nodered
-domoticz
+ #what you need:
+- ESP32
+- tasmota firmware
+- nodered
+- domoticz
+
+thanks to @Vic for help on making this happen to modify the circuit and also thanks to tasmota discord channel: [Discord](https://discord.gg/Ks2Kzd4)
 
 
 1. deassemble the control board and look at the rotary pins and GND pin (look at inage attaced)
