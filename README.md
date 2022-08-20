@@ -55,11 +55,11 @@ keep in mind that measuring volts between R32 and GND exposed on pitboss PCB
   so commands in tasmota console to set a specific temperature level will be:
   open tasmota web page of your ESP32 => click at console button => enter into console and type commands:
   
-  `pwm14`
+  `pwm1 14`
   
   you will see that pitboss will display temperature of 150°C 
   
-  `pwm8`
+  `pwm1 8`
   
     you will see that pitboss will display temperature of 95°C 
   
