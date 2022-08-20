@@ -51,6 +51,19 @@ keep in mind that measuring volts between R32 and GND exposed on pitboss PCB
  selector AT 260°c => POSITION10 = 4.5v => PWM level from ESP32 = 190
  selector AT MAX°c => POSITION11 = 5v => PWM level from ESP32 = 600
   ```
+  
+  so commands in tasmota console to set a specific temperature level will be:
+  open tasmota web page of your ESP32 => click at console button => enter into console and type commands:
+  
+  `pwm14`
+  
+  you will see that pitboss will display temperature of 150°C 
+  
+  `pwm8`
+  
+    you will see that pitboss will display temperature of 95°C 
+  
+  
 
   below an image to explan it 
    ![immagine](https://user-images.githubusercontent.com/44502572/185743035-c55ff010-fe17-45e9-ad29-fddadc4197ba.png)
@@ -62,14 +75,27 @@ tasmota will simulate the pression of the button so you can control remotely the
 
 4. below you can fine a rule that is setup on tasmota to publish the value of pwm:
 
-crule3 ON Analog#A1div10 DO publish BBQ %Value% ENDON ON SYSTEM#BOOT DO Status 10 ENDON `
+`rule3 ON Analog#A1div10 DO publish BBQ %Value% ENDON ON SYSTEM#BOOT DO Status 10 ENDON `
 
 `rule3 1`
 
 the purpose is to publish the ADC values in a topic named BBQ. in this case every settings of the rotrary switch can be easly recognized on the BBQ topic.
 using also this rule we will publish on topic BBQ only if there is a variation of ADC value that conrespond to a temperature step, avoiding to continue to publish every ADC value
 as explained rotary encoder send a different value of voltage to pitboss CPU, and so pitboss CPU regulate consequantially the pellet speed to reach and maintain the setted temperature.
-so 
+we will have at BBQ topic these messages payload:
+payloads = 91=off 78=smoke 67=95°C 58=110°C 49=120°C 40=150°C 31=175°C 22=205°C 14=230°C 5=245°C 0=260°C
+reading these mqtt messages you can easly with nodered convert into domoticz switch level to monitor the status of pitboss temperature if you act manually to rotary incocoder
+the other way round is keep at OFF the rotary encoder and from domoticz switch level turn on pitboss and choose the cooking temperature that you want.
+to do this es explained in the table at point 2. youhave to send out from domoticz to tasmota the pwm value:
+mqtt message will be for example:
+`cmnd/%topic_of_ESP32%/pwm1 %numberOfPwmValue%`
+
+example: for smoke level
+`cmnd/pitboss/pwm1 6`
+
+example: for 175°C level
+`cmnd/pitboss/pwm1 18`
+ 
 
 5. now if you want to control remotely the BBQ changing the temperature and smoke level it's just a metter to use systems like nodered + domoticz
 the idea is to create in domoticz a dummy device that will have multiple selection (selector switch) and so you can address evey level of the domoticz dummy switch to a temperature of pitboss
