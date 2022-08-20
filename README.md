@@ -35,7 +35,9 @@ with this mode, "I simply" send to pitboos CPU a different value of voltage, bec
 so now without manual rotation of rotary encoder, thanks to PWM i send out the volage step that the pitboss CPU expect.
 at every voltage step correspond a temperature settings and pitboss CPU regulate the pellet speed consequentially to reach that temperature and then to maintain that temperature constantly
 keep in mind that measuring volts between R32 and GND exposed on pitboss PCB
+
  you will find:
+ ```
  slector OFF => POSITION1 = 0V => PWM level from ESP32 = 0
  selector AT SMOKE LEVEL => POSITION2 = 0.5v => PWM level from ESP32 = 6
  selector AT 95°c => POSITION3 = 1v  => PWM level from ESP32 = 8
@@ -48,7 +50,7 @@ keep in mind that measuring volts between R32 and GND exposed on pitboss PCB
  selector AT 240°c => POSITION9 = 4v => PWM level from ESP32 = 70
  selector AT 260°c => POSITION10 = 4.5v => PWM level from ESP32 = 190
  selector AT MAX°c => POSITION11 = 5v => PWM level from ESP32 = 600
-  
+  ```
 
   below an image to explan it 
    ![immagine](https://user-images.githubusercontent.com/44502572/185743035-c55ff010-fe17-45e9-ad29-fddadc4197ba.png)
@@ -60,7 +62,7 @@ tasmota will simulate the pression of the button so you can control remotely the
 
 4. below you can fine a rule that is setup on tasmota to publish the value of pwm:
 
-`rule3 ON Analog#A1div10 DO publish BBQ %Value% ENDON ON SYSTEM#BOOT DO Status 10 ENDON `
+crule3 ON Analog#A1div10 DO publish BBQ %Value% ENDON ON SYSTEM#BOOT DO Status 10 ENDON `
 
 `rule3 1`
 
