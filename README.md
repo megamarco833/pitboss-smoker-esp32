@@ -57,11 +57,13 @@ keep in mind that measuring volts between R32 and GND exposed on pitboss PCB
   
   `pwm1 14`
   
+  
   you will see that pitboss will display temperature of 150°C 
   
   `pwm1 8`
   
-    you will see that pitboss will display temperature of 95°C 
+
+you will see that pitboss will display temperature of 95°C 
   
   
 
@@ -82,11 +84,16 @@ tasmota will simulate the pression of the button so you can control remotely the
 the purpose is to publish the ADC values in a topic named BBQ. in this case every settings of the rotrary switch can be easly recognized on the BBQ topic.
 using also this rule we will publish on topic BBQ only if there is a variation of ADC value that conrespond to a temperature step, avoiding to continue to publish every ADC value
 as explained rotary encoder send a different value of voltage to pitboss CPU, and so pitboss CPU regulate consequantially the pellet speed to reach and maintain the setted temperature.
+
 we will have at BBQ topic these messages payload:
-payloads = 91=off 78=smoke 67=95°C 58=110°C 49=120°C 40=150°C 31=175°C 22=205°C 14=230°C 5=245°C 0=260°C
-reading these mqtt messages you can easly with nodered convert into domoticz switch level to monitor the status of pitboss temperature if you act manually to rotary incocoder
+
+`payloads = 91=off 78=smoke 67=95°C 58=110°C 49=120°C 40=150°C 31=175°C 22=205°C 14=230°C 5=245°C 0=260°C`
+
+reading these mqtt messages you can easly with nodered convert into domoticz switch level to monitor the status of pitboss temperature if you act manually to rotary incocoder.
+
 the other way round is keep at OFF the rotary encoder and from domoticz switch level turn on pitboss and choose the cooking temperature that you want.
-to do this es explained in the table at point 2. youhave to send out from domoticz to tasmota the pwm value:
+to do this es explained in the table at point 2. youhave to send out from domoticz to tasmota the pwm value.
+
 mqtt message will be for example:
 `cmnd/%topic_of_ESP32%/pwm1 %numberOfPwmValue%`
 
